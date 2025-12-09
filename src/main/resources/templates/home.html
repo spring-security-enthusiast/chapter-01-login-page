@@ -6,34 +6,74 @@
 <div th:replace="~{fragment/template :: navigation}">&nbsp;</div>
 
 <main>
-    <div class="container-fluid" style="padding-top: 10px; padding-bottom: 10px;">
+    <div class="container-fluid" style="padding-top: 40px; padding-bottom: 10px;">
         <div class="row">
             <div class="col col-md-12 col-lg-8">
-
                 <div class="card shadow-sm mb-3">
-                    <div class="card-body">
-                        <h1 class="h3 mb-2">Welcome to the home page</h1>
+                    <div class="card-body" >
+                        <h1 class="h3 mb-2">You’re in ✅</h1>
                         <p class="text-muted mb-3">
-                            You’ve successfully logged in using Spring Security’s custom
-                            <code>.loginPage()</code> configuration.
+                            Welcome to the <code>/home</code> page.
+                            This is the landing page that Spring Security sends you to
+                            after a successful login using <code>.defaultSuccessUrl("/home", ...)</code>.
                         </p>
 
                         <p class="mb-2">
-                            This page is a simple “post-login” landing page mapped to <code>/home</code>.
-                            We’ll reuse it in later chapters when we explore
-                            <code>.defaultSuccessUrl()</code> and other login behaviors.
+                            In this chapter, the goal is to help you <strong>feel</strong> how
+                            Spring Security decides where to send the user after login:
+                            sometimes back to the original protected URL, sometimes always
+                            to this <code>/home</code> page.
                         </p>
 
                         <hr/>
 
-                        <h2 class="h5 mb-2">Try this next:</h2>
+                        <h2 class="h5 mb-2">🔬 Experiments to Try</h2>
                         <ul class="mb-3">
-                            <li>Refresh the page and notice you stay logged in.</li>
-                            <li>Access a protected URL directly and see how Spring remembers it.</li>
-                            <li>Log out and log back in to see the redirect flow again.</li>
+                            <li>
+                                Go directly to <code>/auth/login</code>, log in as
+                                <code>admin/password</code>, and notice how the form posts to
+                                <code>/auth/login_processing</code> and then redirects you to
+                                <code>/home</code>.
+                            </li>
+                            <li>
+                                From <code>/auth/login</code>, enter a wrong password (for example:
+                                <code>john / wrongpassword</code>). Watch how Spring Security redirects
+                                you back to <code>/auth/login?error=true</code> because of
+                                <code>.failureUrl("/auth/login?error=true")</code>, and how the red
+                                error banner is displayed.
+                            </li>
+                            <li>
+                                Try refreshing the page while the error banner is visible and notice that
+                                the message is still driven by the
+                                <code>SPRING_SECURITY_LAST_EXCEPTION</code> stored in the HTTP session.
+                            </li>
+                            <li>
+                                (Optional) If you log in as <code>user/password</code> (expired account), log in with that
+                                username and see how the exception message (for example
+                                <code>"User account has expired"</code>) is also shown through the same
+                                error banner.
+                            </li>
                         </ul>
 
 
+                        <p class="small text-muted">
+                            Try each variation a few times — this is the easiest way to build
+                            intuition for how Spring Security stores and uses the “saved request”.
+                        </p>
+
+                        <hr/>
+
+                        <h2 class="h5 mb-2">⏭ Coming Up Next: Forward vs Redirect</h2>
+                        <p class="mb-2">
+                            In the next chapter, we’ll reuse this demo and compare
+                            <code>.defaultSuccessUrl(...)</code> with
+                            <code>.successForwardUrl(...)</code> and
+                            <code>.failureForwardUrl(...)</code>.
+                        </p>
+                        <ul class="mb-0">
+                            <li><strong>Redirect</strong> – sends a 302 to the browser and changes the URL.</li>
+                            <li><strong>Forward</strong> – stays on the server side and forwards the request internally.</li>
+                        </ul>
                     </div>
                 </div>
 

@@ -1,62 +1,69 @@
-# Chapter 01 – Login Basics
+# Chapter 01 – Login Default Success URL
 
-This chapter introduces the foundations of Spring Security’s form login using real, working code.
+This chapter introduces the foundations of Spring Security’s form login using real, working code — with a special focus on **`defaultSuccessUrl`** and how redirect behavior works after a successful login.
 
 Spring Security can feel overwhelming at first because many things happen “behind the scenes”.
-In this chapter, we slow everything down and focus on how login actually works, step by step.
+In this chapter, we slow everything down and focus on how login and **post-login redirects** actually work, step by step.
 
-This project is intentionally kept simple and focused — no databases, no JWT, no OAuth, no microservices.
-
-# 🎯What You Will Learn
-By the end of this chapter, you will understand:
-* How Spring Security enables form-based login
-* Where the login page comes from
-* What happens when login succeeds or fails
-* How Spring Security decides who can access which URL
-
-# 🧱 What This Chapter Covers✅ 
-
-Included in this project:
-* Custom login page (Thymeleaf)
-* Default Spring Security filter chain
-* Username + password authentication
-* Redirect behavior after login
-* Basic protected and public endpoints
-
-# 🚫 Not covered yet (intentionally):
-* Logout
-* Remember-me
-* CSRF deep dive
-* OAuth2 / JWT / Keycloak
-* Database-backed users
-
-Each concept above will be introduced gradually in later chapters.
+This project is intentionally kept simple and focused — **no databases, no JWT, no OAuth, no microservices** — just the core login flow.
 
 ---
 
-# 🚀 How to Run the Project
-Prerequisites
+## 🎯 What You Will Learn
+
+By the end of this chapter, you will understand:
+
+* How Spring Security enables **form-based login**
+* How a **custom login page** is wired using `.loginPage("/auth/login")`
+* What happens when login **succeeds or fails**
+* How Spring Security decides **where to redirect** after login using:
+  * `defaultSuccessUrl("/home")`
+  * `defaultSuccessUrl("/home", true)` vs `defaultSuccessUrl("/home", false)`
+* How Spring Security decides who can access which URL (basic URL authorization)
+
+---
+
+## 🧱 What This Chapter Covers ✅
+
+Included in this project:
+
+* Custom login page (Thymeleaf) at `/auth/login`
+* Default Spring Security filter chain (with small customizations)
+* Username + password authentication using in-memory user(s)
+* Redirect behavior after login:
+  * When there is **no saved request**
+  * When the user first tries to access a **protected URL**
+* Basic protected and public endpoints:
+  * Public: `/auth/login`, static assets
+  * Protected: `/home`, `/dashboard/**` (as example)
+
+---
+
+## 🚫 Not Covered Yet (Intentionally)
+
+These topics are very important, but to avoid overloading you, they are **not** covered in this chapter:
+
+* Logout handling
+* Remember-me
+* CSRF deep dive
+* OAuth2 / JWT / Keycloak
+* Database-backed users and roles
+
+Each of these will be introduced gradually in later chapters, once the core login and redirect mechanics are fully clear.
+
+---
+
+## 🚀 How to Run the Project
+
+### Prerequisites
+
 * Java 17+
 * Maven
-* (Optional) IntelliJ IDEA
+* (Optional) IntelliJ IDEA or your preferred IDE
 
-## Start the application
-```java
+### Start the Application
+
+From the project root:
+
+```bash
 ./mvnw spring-boot:run
-```
-or from IDE:
-```aiignore
-Run DemoApplication.java
-```
-
-## Open in browser
-* Login page:
-  * 👉 http://localhost:8080/login
-* Protected page (requires login):
-  * 👉 http://localhost:8080/home 
-
-
-## Default User
-This demo uses an in-memory user:
-* Username: admin
-* Password: password

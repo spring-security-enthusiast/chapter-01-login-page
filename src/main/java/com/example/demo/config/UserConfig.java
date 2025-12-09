@@ -29,6 +29,8 @@ public class UserConfig {
             UserDetails user = User.withUsername("user")
                     .passwordEncoder(bcryptPasswordEncoder()::encode)
                     .password("password")
+                    .credentialsExpired(true)
+                    .accountExpired(true)
                     .roles("USER")
                     .build();
 
@@ -37,6 +39,13 @@ public class UserConfig {
                     .password("password")
                     .roles("ADMIN")
                     .build();
+
+            UserDetails john = User.withUsername("admin")
+                    .passwordEncoder(bcryptPasswordEncoder()::encode)
+                    .password("password")
+                    .roles("ADMIN")
+                    .build();
+
 
             manager.createUser(user);
             manager.createUser(admin);
