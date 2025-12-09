@@ -91,7 +91,8 @@ public class LoginFailureUrlTest {
                             // allow login endpoints
                             .requestMatchers(
                                     PathRequest.toStaticResources().atCommonLocations(),
-                                    PathPatternRequestMatcher.withDefaults().matcher("/auth/**")
+                                    PathPatternRequestMatcher.withDefaults().matcher("/auth/**"),
+                                    PathPatternRequestMatcher.withDefaults().matcher("/error/**")
                             ).permitAll()
                             .anyRequest().authenticated()
                     )
