@@ -9,14 +9,9 @@
             <!-- Error banner -->
             <div th:if="${param.error}" class="alert alert-danger" role="alert">
                 <strong>Login failed.</strong>
-                <br />
-                <span th:if="${session != null and session['SPRING_SECURITY_LAST_EXCEPTION'] != null}"
-                      th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
-                  Invalid username or password. Please try again.
-                </span>
-                <span th:if="${session == null or session['SPRING_SECURITY_LAST_EXCEPTION'] == null}">
-                  Invalid username or password. Please try again.
-                </span>
+                <p th:text="${#strings.defaultString(session['SPRING_SECURITY_LAST_EXCEPTION']?.message,
+                 'Invalid username or password. Please try again.')}">
+                </p>
             </div>
 
 
