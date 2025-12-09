@@ -87,7 +87,8 @@ class DemoApplicationTests {
 				.authorizeHttpRequests(auth -> auth
 					.requestMatchers(
 							PathRequest.toStaticResources().atCommonLocations(),
-							PathPatternRequestMatcher.withDefaults().matcher("/auth/**")
+							PathPatternRequestMatcher.withDefaults().matcher("/auth/**"),
+							PathPatternRequestMatcher.withDefaults().matcher("/error/**")
 					).permitAll()
 					.anyRequest().authenticated()
 				)
