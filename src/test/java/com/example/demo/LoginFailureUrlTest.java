@@ -21,7 +21,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -73,9 +72,9 @@ public class LoginFailureUrlTest {
         mvc.perform(get("/auth/login")
                         .param("error", "true")
                         .session(session))
-                .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content().string(containsString("Bad credentials")));
+                .andExpect(content().string(containsString("Invalid username or password")))
+                .andDo(print());
     }
 
 
