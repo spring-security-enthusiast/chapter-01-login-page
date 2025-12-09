@@ -18,20 +18,18 @@ public class SecurityConfig {
         http
             .csrf(Customizer.withDefaults()) // CSRF protection configuration
             .authorizeHttpRequests(authorize -> authorize
-                    .requestMatchers(
-                            PathRequest.toStaticResources().atCommonLocations()
-                            // NOTE:
-                            // We are *not* whitelisting "/error" here on purpose.
-                            // If you also permit "/error/**", you won't see the /error?continue behavior
-                            // that we debug in this chapter.
-//                          ,PathPatternRequestMatcher.withDefaults().matcher("/error/**")
-                    ).permitAll()
-                    .requestMatchers("/auth/login").permitAll()
-                    .anyRequest().authenticated()
+                .requestMatchers(
+                      PathRequest.toStaticResources().atCommonLocations(),
+                        PathPatternRequestMatcher.withDefaults().matcher("/auth/**"), // whitelist widecard
+                      PathPatternRequestMatcher.withDefaults().matcher("/error/**")
+                ).permitAll()
+                .anyRequest().authenticated()
             )
             .formLogin(formLogin -> formLogin
                 .loginPage("/auth/login")          // GET: show the login page
                 .loginProcessingUrl("/auth/login") // POST: process the login form
+                .defaultSuccessUrl("/home", false) // if true, always redirect to home page
+                .failureUrl("/auth/login?error=true")
                 .permitAll()                       // also whitelists /auth/login (GET + POST)
             );
             // no .logout(...) here yet

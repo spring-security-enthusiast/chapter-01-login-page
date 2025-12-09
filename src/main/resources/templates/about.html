@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragment/template :: head}"></head>
+<body>
+
+<div th:replace="~{fragment/template :: navigation}"></div>
+
+<main>
+    <div class="container-fluid" style="padding-top: 40px; padding-bottom: 10px;">
+        <div class="row">
+            <div class="col col-md-12 col-lg-8">
+
+                <div class="card shadow-sm mb-3">
+                    <div class="card-body">
+                        <h1 class="h3 mb-2">About This Demo</h1>
+
+                        <p class="text-muted mb-3">
+                            This <code>/about</code> page is a normal, protected page in the
+                            sample application. You cannot view it unless you are authenticated.
+                        </p>
+
+                        <p class="mb-2">
+                            In a real system this might be an “About this app”,
+                            “Profile”, or “Account details” page. Here, it exists so you can
+                            see how Spring Security works together with:
+                            <code>.loginPage(...)</code>,
+                            <code>.loginProcessingUrl(...)</code>, and
+                            <code>.failureUrl(...)</code>.
+                        </p>
+
+                        <hr/>
+
+                        <h2 class="h5 mb-2">🎓 Experiments to Try</h2>
+                        <ol class="mb-3">
+                            <li>
+                                Log out (or open a fresh incognito window).
+                            </li>
+                            <li>
+                                Go directly to <code>/about</code> in your browser.
+                            </li>
+                            <li>
+                                Notice that Spring Security redirects you to
+                                <code>/auth/login</code> because <code>/about</code>
+                                requires authentication.
+                            </li>
+                            <li>
+                                Log in with the demo user (for example
+                                <code>admin / password</code>) and observe that you can now
+                                access <code>/about</code> normally.
+                            </li>
+                        </ol>
+
+                        <p class="small text-muted mb-3">
+                            While you are on the login page, try entering a wrong password.
+                            Because the security configuration uses
+                            <code>.failureUrl("/auth/login?error=true")</code>,
+                            Spring will redirect back to <code>/auth/login?error=true</code>,
+                            and the login page will show a friendly error message.
+                        </p>
+
+                        <hr/>
+
+                        <p class="mb-0">
+                            Together, the custom login page, the login processing URL, and the
+                            failure URL give you a clear, step-by-step view of how Spring Security
+                            handles both successful and failed authentication attempts before you
+                            end up on protected pages like this one.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer text-center" th:replace="~{fragment/template :: footer}"></footer>
+
+</body>
+</html>

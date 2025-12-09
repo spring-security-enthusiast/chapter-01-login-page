@@ -1,0 +1,126 @@
+/* Console cards */
+.console-card {
+    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), #020617 70%);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    color: #e5e7eb;
+}
+
+.console-title {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    color: #4ade80;
+}
+
+.console-subtitle {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.console-meta {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.7rem;
+    color: #9ca3af;
+    opacity: 0.8;
+}
+
+.console-divider {
+    border-color: rgba(148, 163, 184, 0.4);
+}
+
+/* Boxes & rows */
+.console-box {
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.console-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.console-label {
+    color: #9ca3af;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.console-value {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Notes */
+.console-notes p {
+    font-size: 0.8rem;
+}
+
+/* Terminal */
+.console-terminal {
+    background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.1), rgba(15, 23, 42, 0.95));
+    border-radius: 0.75rem;
+    border: 1px solid rgba(55, 65, 81, 0.8);
+    padding: 0.75rem 0.9rem;
+    font-size: 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: #d1fae5;
+}
+
+.console-terminal pre {
+    white-space: pre-wrap;
+}
+
+/* Log styles */
+.log-ts {
+    color: #6ee7b7;
+}
+
+.log-tag {
+    display: inline-block;
+    min-width: 3.1rem;
+    text-align: center;
+    border-radius: 999px;
+    padding: 0 0.3rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+}
+
+.log-info {
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+}
+
+.log-auth {
+    border: 1px solid #4ade80;
+    color: #4ade80;
+}
+
+.log-grant {
+    border: 1px solid #a855f7;
+    color: #a855f7;
+}
+
+.log-nav {
+    border: 1px solid #f97316;
+    color: #f97316;
+}
+
+.log-warn {
+    border: 1px solid #fbbf24;
+    color: #fbbf24;
+}
+
+.log-redirect {
+    border: 1px solid #22d3ee;
+    color: #22d3ee;
+}
+
+/* Bullet list */
+.console-list {
+    font-size: 0.8rem;
+    padding-left: 1.1rem;
+}
